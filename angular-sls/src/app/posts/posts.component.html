@@ -1,0 +1,31 @@
+<div *ngFor="let post of posts">
+  <div class="my-5 mx-5">
+    <div class="card">
+      <div class="card-header">
+        {{ post.title }}
+      </div>
+      <div class="card-body">
+        <p class="small-font"><b>ID: </b>{{ post.id }}</p>
+        <p class="card-text">{{ post.body }}</p>
+        <!-- <button class="btn btn-outline-primary mr-3">Like</button>
+        <button class="btn btn-outline-danger" (click)="apiCallDeletePost(post.id)">Delete</button> -->
+
+      </div>
+      <div class="card-footer">
+        <!-- <div class="float-left card-footer-item pt-1">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div> -->
+        <div class="float-left card-footer-item pt-1">
+          <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+        </div>
+        <div class="float-left card-footer-item pt-1">
+          <p class="card-text ml-1">{{ post.likes }}</p>
+        </div>
+        <div class="float-right card-footer-item">
+          <button class="btn btn-outline-primary mr-3" (click)="apiCallLikePost(post.id)">Like</button>
+          <button class="btn btn-outline-danger" (click)="apiCallDeletePost(post.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

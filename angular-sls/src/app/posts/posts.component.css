@@ -1,0 +1,25 @@
+.small-font {
+    font-size: small;
+    font-style: italic;
+}
+
+.card-footer {
+    background-color: white;
+}
+
+.card-footer-item {
+    display: block;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.card {
+    max-width: 600px;
+    min-width: 300px;
+}
