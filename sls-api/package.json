@@ -1,5 +1,5 @@
 {
-  "name": "rest-api",
+  "name": "sls-api",
   "version": "1.0.0",
   "description": "",
   "main": "handler.js",
@@ -9,11 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "serverless-offline": "^5.12.1"
-  },
   "dependencies": {
-    "dotenv": "^8.2.0",
-    "mongoose": "^5.8.11"
+    "uuid": "^3.4.0"
   }
 }
