@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
+import { Auth } from 'aws-amplify';
+
 import { ApiService } from '../api.service';
 
 @Component({
@@ -18,14 +21,40 @@ export class NewPostComponent implements OnInit {
   }
 
   apiCallCreatePost(title, body) {
-    let reqBody = {
-      title: title,
-      body: body,
-      likes: 0
-    }
-    console.log(reqBody);
 
-    this.apiService.createPost(JSON.stringify(reqBody));
+    var userName = 'nan';
+
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(
+      user => {
+        console.log(user);
+        userName = user.attributes.email;
+
+        let reqBody = {
+          title: title,
+          body: body,
+          likes: 0,
+          userId: userName
+        }
+        console.log(reqBody);
+
+        this.apiService.createPost(JSON.stringify(reqBody));
+      })
+      .catch(err => {
+        console.log(err);
+        alert(err);
+      });
+
+    // let reqBody = {
+    //   title: title,
+    //   body: body,
+    //   likes: 0,
+    //   userId: userName
+    // }
+    // console.log(reqBody);
+
+    // this.apiService.createPost(JSON.stringify(reqBody));
   }
 
 
