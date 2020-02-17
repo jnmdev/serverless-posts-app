@@ -1,32 +1,16 @@
 {
-    "auth": {
-        "angularsls3ad8419b": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [],
-            "customAuth": false
-        },
-        "userPoolGroups": {
-            "service": "Cognito-UserPool-Groups",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "angularsls3ad8419b",
-                    "attributes": [
-                        "UserPoolId",
-                        "AppClientIDWeb",
-                        "AppClientID",
-                        "IdentityPoolId"
-                    ]
-                }
-            ]
-        }
-    },
-    "storage": {
-        "postsappstorage": {
-            "service": "S3",
-            "providerPlugin": "awscloudformation"
-        }
-    }
+	"auth": {
+		"angularsls2a91c459": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [],
+			"customAuth": false
+		}
+	},
+	"storage": {
+		"postsappstorage": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
 }

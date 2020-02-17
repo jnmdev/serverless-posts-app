@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 
+import { Auth } from 'aws-amplify';
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -17,9 +19,29 @@ export class PostsComponent implements OnInit {
     });
   }
 
-  apiCallDeletePost(id) {
+  // Delte post and check if it came from actual user
+  apiCallDeletePost(id, userNameOfPost) {
     console.log(id);
-    this.apiService.deletePost(id);
+    var userNameLoggedIn;
+
+    Auth.currentAuthenticatedUser({
+      bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
+    }).then(
+      user => {
+        console.log(user);
+        userNameLoggedIn = user.username;
+
+        if(userNameLoggedIn == userNameOfPost){
+          this.apiService.deletePost(id);
+        }
+        else{
+          alert('Only the original poster can delete this item.');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        alert('Error: ' + err);
+      });
   }
 
   apiCallLikePost(id) {

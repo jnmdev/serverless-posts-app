@@ -29,7 +29,7 @@ export class NewPostComponent implements OnInit {
     }).then(
       user => {
         console.log(user);
-        userName = user.attributes.email;
+        userName = user.username;
 
         let reqBody = {
           title: title,

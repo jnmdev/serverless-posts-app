@@ -44,7 +44,7 @@ module.exports.createPost = (event, context, callback) => {
   const post = {
     id: uuid(),
     createdAt: new Date().toISOString(),
-    userId: 1,
+    userId: reqBody.userId,
     title: reqBody.title,
     body: reqBody.body,
     likes: reqBody.likes
