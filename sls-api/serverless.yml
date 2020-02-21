@@ -20,6 +20,8 @@ provider:
         - dynamodb:DeleteItem
      Resource:
       - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.settings.POSTS_TABLE}"
+  apiKeys:
+     - uiClient
 
 functions:
   createPost:
@@ -29,6 +31,7 @@ functions:
         path: /post
         method: post
         cors: true
+        private: true
   getAllPosts:
     handler: handler.getAllPosts
     events:
@@ -36,6 +39,7 @@ functions:
         path: /posts
         method: get
         cors: true
+        private: true
   getPosts:
     handler: handler.getPosts
     events:
@@ -43,6 +47,7 @@ functions:
         path: /posts/{number}
         method: get
         cors: true
+        private: true
   getPost:
     handler: handler.getPost
     events:
@@ -50,6 +55,7 @@ functions:
         path: /post/{id}
         method: get
         cors: true
+        private: true
   updatePost:
     handler: handler.updatePost
     events:
@@ -57,6 +63,7 @@ functions:
         path: /post/{id}
         method: put
         cors: true
+        private: true
   deletePost:
     handler: handler.deletePost
     events:
@@ -64,6 +71,7 @@ functions:
         path: /post/{id}
         method: delete
         cors: true
+        private: true
 
 resources:
   Resources:

@@ -31,10 +31,10 @@ export class PostsComponent implements OnInit {
         console.log(user);
         userNameLoggedIn = user.username;
 
-        if(userNameLoggedIn == userNameOfPost){
+        if (userNameLoggedIn == userNameOfPost) {
           this.apiService.deletePost(id);
         }
-        else{
+        else {
           alert('Only the original poster can delete this item.');
         }
       })
@@ -48,7 +48,7 @@ export class PostsComponent implements OnInit {
     // Get current data from api
     const post = this.apiService.getPost(id).subscribe((data) => {
 
-      var response : any = data;
+      var response: any = data;
       // Increment number of likes
       var likes;
       if (typeof response.likes != 'undefined') {
@@ -63,6 +63,18 @@ export class PostsComponent implements OnInit {
       this.apiService.updatePost(response, id)
 
     });
+  }
+
+  getDateFromString(dateString: String) {
+    let regExp: RegExp = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
+    var result = dateString.match(regExp);
+    return result[0];
+  }
+
+  getTimeFromString(dateString: String) {
+    let regExp: RegExp = /[(?!T)[0-9]{2}:[0-9]{2}/;
+    var result = dateString.match(regExp);
+    return result[0];
   }
 
 }

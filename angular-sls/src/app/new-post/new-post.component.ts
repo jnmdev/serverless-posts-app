@@ -43,7 +43,7 @@ export class NewPostComponent implements OnInit {
       })
       .catch(err => {
         console.log(err);
-        alert(err);
+        alert('Error: ' + err);
       });
 
     // let reqBody = {

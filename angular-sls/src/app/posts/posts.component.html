@@ -1,14 +1,15 @@
 <div *ngFor="let post of posts">
-  <div class="my-5 mx-5">
+  <div class="my-5">
     <div class="card">
       <div class="card-header">
-        <i class="fa fa-user" aria-hidden="true"></i> {{ post.userId }}
+        <i class="fa fa-user mr-2" aria-hidden="true"></i> <b>{{ post.userId }}</b> posted on
+        {{ getDateFromString(post.createdAt) }}, {{ getTimeFromString(post.createdAt) }}
       </div>
       <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
         <p class="card-text">{{ post.body }}</p>
 
-        <p class="small-font mt-1"><b>PostID: </b>{{ post.id }}</p>
+        <p class="small-font mt-1">uuid: {{ post.id }}</p>
 
       </div>
       <div class="card-footer">

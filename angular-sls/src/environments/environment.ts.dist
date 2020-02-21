@@ -1,0 +1,5 @@
+export const environment = {
+  production: false,
+  apiBaseUrl: 'https://pg70462vjc.execute-api.eu-west-2.amazonaws.com/dev/',
+  apiKey: 'oxNE6BiRTm2scjL0m4kWv94drmR7nXbA567wvrt1'
+};

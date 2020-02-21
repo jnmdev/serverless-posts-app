@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -7,12 +8,14 @@ import { HttpClient } from '@angular/common/http';
 
 export class ApiService {
 
-  readonly api_url = 'https://pg70462vjc.execute-api.eu-west-2.amazonaws.com/dev/';
+  readonly api_url = environment.apiBaseUrl;
+  readonly apiKey = environment.apiKey;
+  readonly headers = new HttpHeaders().set('x-api-key', this.apiKey);
 
   constructor(private http: HttpClient) { }
 
   public getPosts() {
-    return this.http.get(this.api_url.concat('posts/'));
+    return this.http.get(this.api_url.concat('posts/'), { headers: this.headers });
   }
 
   public createPost(body) {
@@ -20,7 +23,7 @@ export class ApiService {
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
 
-    this.http.post(this.api_url.concat('post/'), body)
+    this.http.post(this.api_url.concat('post/'), body, { headers: this.headers })
       .subscribe(data => {
         // alert('Post successfully created.');
         window.location.reload();
@@ -29,29 +32,29 @@ export class ApiService {
       });
   }
 
-  public deletePost(id : string){
-    this.http.delete(this.api_url.concat('post/').concat(id))
-    .subscribe(data => {
-      // alert('Post successfully deleted.');
-      window.location.reload();
-    }, error => {
-      console.log(JSON.stringify(error.json()));
-    });
+  public deletePost(id: string) {
+    this.http.delete(this.api_url.concat('post/').concat(id), { headers: this.headers })
+      .subscribe(data => {
+        // alert('Post successfully deleted.');
+        window.location.reload();
+      }, error => {
+        console.log(JSON.stringify(error.json()));
+      });
   }
 
 
-  public updatePost(body, id : string) {
-    this.http.put(this.api_url.concat('post/').concat(id), body)
-    .subscribe(data => {
-      // alert('Post updated');
-      window.location.reload();
-    }, error => {
-      console.log(JSON.stringify(error.json()));
-    });
+  public updatePost(body, id: string) {
+    this.http.put(this.api_url.concat('post/').concat(id), body, { headers: this.headers })
+      .subscribe(data => {
+        // alert('Post updated');
+        window.location.reload();
+      }, error => {
+        console.log(JSON.stringify(error.json()));
+      });
   }
 
-  public getPost(id : string){
-    return this.http.get(this.api_url.concat('post/').concat(id));
+  public getPost(id: string) {
+    return this.http.get(this.api_url.concat('post/').concat(id), { headers: this.headers });
   }
 
 }
