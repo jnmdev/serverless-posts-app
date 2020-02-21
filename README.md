@@ -5,4 +5,6 @@ Serverless backend was built with [serverless framework](https://github.com/serv
 
 Authentification component via [AWS Amplify](https://github.com/aws-amplify/amplify-js), used for managing user pools in AWS Cognito.
 
+![img not found](img/infrastructure.png)
+
 Current AWS Cloudfront URL: https://d1gna7c44pmpfw.cloudfront.net
