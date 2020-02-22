@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { PostsComponent } from './posts/posts.component';
 import { AmplifyAuthComponent } from './amplify-auth/amplify-auth.component';
+import { PostComponent } from './post/post.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewPostComponent,
     PostsComponent,
-    AmplifyAuthComponent
+    AmplifyAuthComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

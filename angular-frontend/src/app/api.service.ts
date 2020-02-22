@@ -47,7 +47,7 @@ export class ApiService {
     this.http.put(this.api_url.concat('post/').concat(id), body, { headers: this.headers })
       .subscribe(data => {
         // alert('Post updated');
-        window.location.reload();
+        // window.location.reload();
       }, error => {
         console.log(JSON.stringify(error.json()));
       });
