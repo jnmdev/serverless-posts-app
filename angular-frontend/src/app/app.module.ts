@@ -10,12 +10,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { PostsComponent } from './posts/posts.component';
+import { AmplifyAuthComponent } from './amplify-auth/amplify-auth.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewPostComponent,
-    PostsComponent
+    PostsComponent,
+    AmplifyAuthComponent
   ],
   imports: [
     BrowserModule,
