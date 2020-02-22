@@ -1,9 +1,9 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
-angular-sls/deploy_to_aws.bash
-angular-sls/amplify/*
-angular-sls/src/environments/environment.prod.ts
-angular-sls/src/environments/environment.ts
+angular-frontend/deploy_to_aws.bash
+angular-frontend/amplify/*
+angular-frontend/src/environments/environment.prod.ts
+angular-frontend/src/environments/environment.ts
 
 # compiled output
 */dist
