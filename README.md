@@ -7,7 +7,7 @@ Serverless backend was built with [serverless framework](https://github.com/serv
 
 Authentification component via [AWS Amplify](https://github.com/aws-amplify/amplify-js), used for managing user pools in AWS Cognito.
 
-![img not found](img/architecture.png)
+<img src="img/architecture.png" alt="drawing" width="600" style="display: inline-block"/>
 
 
 ### HTTP Endpoints
