@@ -1,5 +1,8 @@
-<div *ngFor="let post of posts">
-  <div class="my-5">
-    <app-post [post]="post"></app-post>
+<div>
+  <app-new-post (add)="onAddPost($event)"></app-new-post>
+  <div *ngFor="let post of posts">
+    <div class="my-5">
+      <app-post [post]="post" (remove)="onRemovePost($event)"></app-post>
+    </div>
   </div>
 </div>

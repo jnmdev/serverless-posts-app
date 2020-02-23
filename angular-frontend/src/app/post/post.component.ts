@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Auth } from 'aws-amplify';
+import { Post } from '../post.model'
 
 @Component({
   selector: 'app-post',
@@ -9,7 +10,11 @@ import { Auth } from 'aws-amplify';
 })
 export class PostComponent implements OnInit {
 
-  @Input() post;
+  @Input()
+  post: Post;
+
+  @Output()
+  remove: EventEmitter<Post> = new EventEmitter();
 
   constructor(private apiService: ApiService) { }
 
@@ -23,11 +28,9 @@ export class PostComponent implements OnInit {
       bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(
       user => {
-        console.log(user);
         userNameLoggedIn = user.username;
-
         if (userNameLoggedIn == this.post.userId) {
-          this.apiService.deletePost(this.post.id);
+          this.remove.emit(this.post);
         }
         else {
           alert('Only the original poster can delete this item.');
@@ -45,13 +48,13 @@ export class PostComponent implements OnInit {
     this.apiService.updatePost(this.post, this.post.id)
   }
 
-  getDateFromString(dateString: String) {
+  getDateFromString(dateString: string) {
     let regExp: RegExp = /[0-9]{4}-[0-9]{2}-[0-9]{2}/;
     var result = dateString.match(regExp);
     return result[0];
   }
 
-  getTimeFromString(dateString: String) {
+  getTimeFromString(dateString: string) {
     let regExp: RegExp = /[(?!T)[0-9]{2}:[0-9]{2}/;
     var result = dateString.match(regExp);
     return result[0];

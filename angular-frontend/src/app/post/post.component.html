@@ -1,25 +1,25 @@
-<div class="card">
-    <div class="card-header">
-      <i class="fa fa-user mr-2" aria-hidden="true"></i> <b>{{ post.userId }}</b> posted on
-      {{ getDateFromString(post.createdAt) }}, {{ getTimeFromString(post.createdAt) }}
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ post.title }}</h5>
-      <p class="card-text">{{ post.body }}</p>
+<div class="card post-card">
+  <div class="card-header">
+    <i class="fa fa-user mr-2" aria-hidden="true"></i> <b>{{ post.userId }}</b> posted on
+    {{ getDateFromString(post.createdAt) }}, {{ getTimeFromString(post.createdAt) }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ post.title }}</h5>
+    <p class="card-text">{{ post.body }}</p>
 
-      <p class="small-font mt-1">uuid: {{ post.id }}</p>
+    <p class="small-font mt-1">uuid: {{ post.id }}</p>
 
+  </div>
+  <div class="card-footer">
+    <div class="float-left card-footer-item pt-1">
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
     </div>
-    <div class="card-footer">
-      <div class="float-left card-footer-item pt-1">
-        <i class="fa fa-thumbs-up" aria-hidden="true"></i>
-      </div>
-      <div class="float-left card-footer-item pt-1">
-        <p class="card-text ml-1">{{ post.likes }}</p>
-      </div>
-      <div class="float-right card-footer-item">
-        <button class="btn btn-outline-primary mr-3" (click)="apiCallLikePost()">Like</button>
-        <button class="btn btn-outline-danger" (click)="apiCallDeletePost()">Delete</button>
-      </div>
+    <div class="float-left card-footer-item pt-1">
+      <p class="card-text ml-1">{{ post.likes }}</p>
+    </div>
+    <div class="float-right card-footer-item">
+      <button class="btn btn-outline-primary mr-3" (click)="apiCallLikePost()">Like</button>
+      <button class="btn btn-outline-danger" (click)="apiCallDeletePost()">Delete</button>
     </div>
   </div>
+</div>

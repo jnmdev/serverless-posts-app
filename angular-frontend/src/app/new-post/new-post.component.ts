@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Post } from '../post.model'
 
 import { Auth } from 'aws-amplify';
-import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-new-post',
@@ -11,15 +11,17 @@ import { ApiService } from '../api.service';
 
 export class NewPostComponent implements OnInit {
 
-  public title: any = '';
-  public body: any = '';
+  newPost: Post = new Post();
 
-  constructor(private apiService: ApiService) { }
+  @Output()
+  add: EventEmitter<Post> = new EventEmitter();
+
+  constructor() { }
 
   ngOnInit() {
   }
 
-  apiCallCreatePost(title, body) {
+  apiCallCreatePost(title: string, body: string) {
 
     var userName = 'nan';
 
@@ -27,33 +29,21 @@ export class NewPostComponent implements OnInit {
       bypassCache: false  // Optional, By default is false. If set to true, this call will send a request to Cognito to get the latest user data
     }).then(
       user => {
-        console.log(user);
         userName = user.username;
 
-        let reqBody = {
-          title: title,
-          body: body,
-          likes: 0,
-          userId: userName
-        }
-        console.log(reqBody);
+        this.newPost.title = title;
+        this.newPost.body = body;
+        this.newPost.likes = 0;
+        this.newPost.userId = userName;
 
-        this.apiService.createPost(JSON.stringify(reqBody));
+        this.add.emit(this.newPost);
+        this.newPost = new Post();
+
       })
       .catch(err => {
         console.log(err);
         alert('Error: ' + err);
       });
-
-    // let reqBody = {
-    //   title: title,
-    //   body: body,
-    //   likes: 0,
-    //   userId: userName
-    // }
-    // console.log(reqBody);
-
-    // this.apiService.createPost(JSON.stringify(reqBody));
   }
 
 
