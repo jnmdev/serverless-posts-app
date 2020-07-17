@@ -7,8 +7,3 @@ Serverless backend was built with [serverless framework](https://github.com/serv
 
 Authentification component via [AWS Amplify](https://github.com/aws-amplify/amplify-js), used for managing user pools in AWS Cognito.
 
-
-### HTTP Endpoints
-
-* AWS Cloudfront URL for Angular frontend: https://d1gna7c44pmpfw.cloudfront.net
-* API Endpoint (access token needed): https://pg70462vjc.execute-api.eu-west-2.amazonaws.com/dev/
